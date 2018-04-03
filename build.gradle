@@ -1,0 +1,53 @@
+buildscript {
+    ext {
+        //version here to share between build script and projects
+        verKotlin = '1.1.4-3'
+    }
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.0.0'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$verKotlin"
+        classpath "org.jetbrains.kotlin:kotlin-android-extensions:$verKotlin"
+        classpath 'com.github.ben-manes:gradle-versions-plugin:0.15.0'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
+    }
+}
+
+subprojects {
+    group = GROUP
+    version = VERSION_NAME
+}
+
+apply plugin: 'com.github.ben-manes.versions'
+
+ext {
+    minSdkVersion = 14
+    compileSdkVersion = 26
+    targetSdkVersion = compileSdkVersion
+    buildToolsVersion = '26.0.2'
+
+    supportLibVersion = '26.0.2'
+    lifecycleVersion = '1.0.0'
+    lifecycleRuntimeVersion = '1.0.3'
+
+    sourceCompatibilityVersion = JavaVersion.VERSION_1_7
+    targetCompatibilityVersion = JavaVersion.VERSION_1_7
+
+    // Define all dependencies in the base project, to unify & make it easy to update
+    rxJava = 'io.reactivex.rxjava2:rxjava:2.1.3'
+    rxAndroid = 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    navi = 'com.trello.navi2:navi:2.0'
+    lifecycle = "android.arch.lifecycle:runtime:$lifecycleRuntimeVersion"
+    lifecycleProcessor = "android.arch.lifecycle:compiler:$lifecycleVersion"
+    lifecycleExtensions = "android.arch.lifecycle:extensions:$lifecycleVersion"
+    kotlinStdlib = "org.jetbrains.kotlin:kotlin-stdlib:$verKotlin"
+    appCompat = "com.android.support:appcompat-v7:$supportLibVersion"
+    preferenceCompat = "com.android.support:preference-v7:$supportLibVersion"
+    supportAnnotations = "com.android.support:support-annotations:$supportLibVersion"
+    jsr305Annotations = 'com.google.code.findbugs:jsr305:3.0.2'
+    junit = 'junit:junit:4.12'
+    robolectric = 'org.robolectric:robolectric:3.4.2'
+}

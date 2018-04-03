@@ -1,0 +1,35 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        applicationId "com.trello.rxlifecycle2.sample"
+        minSdkVersion rootProject.ext.minSdkVersion
+
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+}
+
+repositories {
+    mavenCentral()
+    google()
+}
+
+dependencies {
+    compile project(':rxlifecycle-components')
+    compile project(':rxlifecycle-kotlin')
+
+    compile rootProject.ext.appCompat
+
+    compile rootProject.ext.kotlinStdlib
+}
